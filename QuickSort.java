@@ -3,7 +3,7 @@
  */
 public class QuickSort extends SortingAlgorithm implements Sorter {
 
-    static final int MAXIMUM_NUMBER_OF_ELEMENTS_FOR_QUICK_SORT = 3;
+    private static final int MAXIMUM_NUMBER_OF_ELEMENTS_FOR_QUICK_SORT = 3;
 
     private double array[];
     private int arrayLength;
@@ -45,7 +45,7 @@ public class QuickSort extends SortingAlgorithm implements Sorter {
 
         // If we have less than the maximum, perform a naive sort
         else {
-            radixSort(array, firstIndex, lastIndex);
+            naiveSort(firstIndex, lastIndex);
         }
 
     }
@@ -61,7 +61,7 @@ public class QuickSort extends SortingAlgorithm implements Sorter {
         int highMarker = lastIndex;
 
         while (lowMarker < highMarker) {
-            while (highMarker > 0 &&
+            while (highMarker > firstIndex &&
                     array[highMarker] >= pivot) {
                 --highMarker;
             }
@@ -80,5 +80,23 @@ public class QuickSort extends SortingAlgorithm implements Sorter {
         swapElementsAtLocation(array, pivotIndex, highMarker);
 
         return highMarker;
+    }
+
+    // TODO: Replace this with the real impl of insertion sort
+    private void naiveSort(int firstIndex, int lastIndex) {
+
+        for (int i = firstIndex; i <= lastIndex; i++) {
+            double valueToInsert = array[i];
+            int indexToInsert = i;
+
+            while(
+                    (indexToInsert > firstIndex) &&
+                            (array[indexToInsert - 1] > valueToInsert)) {
+                array[indexToInsert] = array[indexToInsert - 1];
+                --indexToInsert;
+            }
+
+            array[indexToInsert] = valueToInsert;
+        }
     }
 }
