@@ -5,7 +5,8 @@
 abstract class SortingAlgorithm {
 
     /**
-     * Check if the given array is valid
+     * Check if the given array is valid.
+     *
      * @param array The array to be checked
      * @return  true if the array is valid, false otherwise
      */
@@ -15,5 +16,22 @@ abstract class SortingAlgorithm {
             return false;
         }
         return true;
+    }
+
+    /**
+     * Swap to elements in an array according to their index.
+     *
+     * @param array         The array to operate on
+     * @param firstIndex    First index in the array
+     * @param secondIndex   Second in the array
+     */
+    protected static void swapElementsAtLocation(
+            double[] array,
+            int firstIndex,
+            int secondIndex) {
+
+        double temp = array[firstIndex];
+        array[firstIndex] = array[secondIndex];
+        array[secondIndex] = temp;
     }
 }
