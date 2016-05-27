@@ -27,7 +27,7 @@ public class RandomArrayFactory {
         double randomNumber = Math.random();
         return round(
                 randomNumber,
-                10              // TODO: Change this with the static member of AlgorithmComparison
+                AlgorithmComparison.NUMBER_OF_DIGITS
         );
     }
 
