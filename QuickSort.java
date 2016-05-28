@@ -1,7 +1,7 @@
 /**
  * This class implement the quick sort algorithm
  */
-public class QuickSort extends SortingAlgorithm implements Sorter {
+public class QuickSort implements Sorter {
 
     private static final int MAXIMUM_NUMBER_OF_ELEMENTS_FOR_QUICK_SORT = 3;
 
@@ -15,7 +15,7 @@ public class QuickSort extends SortingAlgorithm implements Sorter {
     @Override
     public void sort(double[] ar) {
 
-        if (!doesArrayValid(ar)) {
+        if (!GeneralUtils.doesArrayValid(ar)) {
             throw new RuntimeException("The input array is not valid");
         }
 
@@ -32,7 +32,7 @@ public class QuickSort extends SortingAlgorithm implements Sorter {
         if ((firstIndex + (MAXIMUM_NUMBER_OF_ELEMENTS_FOR_QUICK_SORT - 1)) <
                 lastIndex) {
 
-            int pivotLocation = partitionArrayWithPivot(firstIndex, lastIndex);
+            int pivotLocation = GeneralUtils.partitionArrayWithPivot(array, firstIndex, lastIndex);
 
             // Recursively call the algorithm on the two halves of the array
             if (pivotLocation > 0) {
@@ -48,38 +48,6 @@ public class QuickSort extends SortingAlgorithm implements Sorter {
             naiveSort(firstIndex, lastIndex);
         }
 
-    }
-
-    private int partitionArrayWithPivot(int firstIndex, int lastIndex) {
-
-        // For simplicity, we pick the pivot as the first element of the array
-        int pivotIndex = firstIndex;
-        double pivot = array[pivotIndex];
-
-        // This variables will help with the iteration on the array
-        int lowMarker = firstIndex + 1;
-        int highMarker = lastIndex;
-
-        while (lowMarker < highMarker) {
-            while (highMarker > firstIndex &&
-                    array[highMarker] >= pivot) {
-                --highMarker;
-            }
-            while (lowMarker < arrayLength &&
-                    array[lowMarker] < pivot) {
-                ++lowMarker;
-            }
-
-            // Check that we did not overlapped
-            if (lowMarker < highMarker) {
-                swapElementsAtLocation(array, lowMarker, highMarker);
-            }
-        }
-
-        // Place the pivot in it's right place and return it's index
-        swapElementsAtLocation(array, pivotIndex, highMarker);
-
-        return highMarker;
     }
 
     // TODO: Replace this with the real impl of insertion sort

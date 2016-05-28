@@ -1,7 +1,7 @@
 /**
  * This class implements merge sort algorithm
  */
-public class MergeSort extends SortingAlgorithm implements Sorter {
+public class MergeSort implements Sorter {
 
     private double array[];
     private int arrayLength;
@@ -13,7 +13,7 @@ public class MergeSort extends SortingAlgorithm implements Sorter {
     @Override
     public void sort(double[] ar) {
 
-        if (!doesArrayValid(ar)) {
+        if (!GeneralUtils.doesArrayValid(ar)) {
             throw new RuntimeException("The input array is not valid");
         }
 
