@@ -1,9 +1,9 @@
 import java.text.DecimalFormat;
 
-public class RadixSort implements Sorter{
+public class RadixSort extends SortingAlgorithm implements Sorter{
 
     // Offset from which the numbers after the 0. start.
-    public static final int DECIMAL_OFFSET = 2;
+    private static final int DECIMAL_OFFSET = 2;
 
     /**
      * Sorts an array using radix and counting sort algorithms.
@@ -11,6 +11,9 @@ public class RadixSort implements Sorter{
      * @param ar The array to be sorted
      */
     public void sort(double[] ar) {
+        if (!doesArrayValid(ar)) {
+            throw new RuntimeException("Given array is not valid");
+        }
 
         for(int index = AlgorithmComparison.NUMBER_OF_DIGITS - 1; index >= 0; index--){
             // Use counting sort at each number's place
