@@ -16,7 +16,7 @@ public class QuickSort extends SortingAlgorithm implements Sorter {
     public void sort(double[] ar) {
 
         if (!doesArrayValid(ar)) {
-            throw new RuntimeException("Given array is not valid");
+            throw new RuntimeException("The input array is not valid");
         }
 
         // Initiate the members of this class
