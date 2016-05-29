@@ -1,7 +1,24 @@
 public class GeneralUtils {
 
-    // TODO: Fix the bug where lastIndex - firstIndex is 1
     public static int partitionArrayWithPivot(double[] array, int firstIndex, int lastIndex) {
+
+        // Handle the case where the array has only 1 element
+        if (firstIndex == lastIndex) {
+            return firstIndex;
+        }
+
+        // Handle the case where the array has only 2 elements
+        if (lastIndex - firstIndex == 1) {
+            if (array[firstIndex] > array[lastIndex]) {
+                swapElementsAtLocation(array, firstIndex, lastIndex);
+                return lastIndex;
+            }
+            else {
+                return firstIndex;
+            }
+        }
+
+        // In any other case
 
         // For simplicity, we pick the pivot as the first element of the array
         int pivotIndex = firstIndex;
