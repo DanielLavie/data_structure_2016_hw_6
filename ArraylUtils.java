@@ -72,7 +72,7 @@ public class ArraylUtils {
     }
 
     /**
-     * Swap to elements in an array according to their index.
+     * Swap two elements in an array according to their index.
      *
      * @param array         The array to operate on
      * @param firstIndex    First index in the array

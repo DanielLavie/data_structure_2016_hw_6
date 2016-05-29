@@ -24,11 +24,11 @@ public class RandSelect implements Selector {
             throw new RuntimeException("The given rank is invalid");
         }
 
-        // Initiate the members of this class.
+        // Initiate the member of this class.
         // We use deep copy to avoid messing up the original array
         this.array = Arrays.copyOf(ar, ar.length);
 
-        return RandomSelection(0, ar.length - 1, i);
+        return RandomSelection(0, array.length - 1, i);
     }
 
     /**

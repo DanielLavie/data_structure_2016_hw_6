@@ -6,7 +6,6 @@ public class QuickSort implements Sorter {
     private static final int MAXIMUM_NUMBER_OF_ELEMENTS_FOR_QUICK_SORT = 3;
 
     private double array[];
-    private int arrayLength;
 
     /**
      * Sort the given array with quick sort algorithm
@@ -19,13 +18,17 @@ public class QuickSort implements Sorter {
             throw new RuntimeException("The input array is not valid");
         }
 
-        // Initiate the members of this class
+        // Initiate the member of this class
         this.array = ar;
-        arrayLength = ar.length;
 
-        quickSort(0, arrayLength - 1);
+        quickSort(0, array.length - 1);
     }
 
+    /**
+     * Recursive function which implements the quick sort algorithm.
+     * @param firstIndex    The first index to be taken in account
+     * @param lastIndex     The last index to be taken in account
+     */
     private void quickSort(int firstIndex, int lastIndex) {
 
         // Check if we have more than the maximum defined number elements
@@ -38,7 +41,7 @@ public class QuickSort implements Sorter {
             if (pivotLocation > 0) {
                 quickSort(firstIndex, pivotLocation - 1);
             }
-            if (pivotLocation < arrayLength - 1) {
+            if (pivotLocation < array.length - 1) {
                 quickSort(pivotLocation + 1, lastIndex);
             }
         }
