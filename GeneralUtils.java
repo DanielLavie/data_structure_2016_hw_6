@@ -1,5 +1,12 @@
 public class GeneralUtils {
 
+    /**
+     * Select the first element as a pivot, then partition the array according to this pivot.
+     * @param array         The array to partition
+     * @param firstIndex    The starting index in the array for the partition
+     * @param lastIndex     The last index in the array for the partition
+     * @return              The index of the pivot at the end of the process
+     */
     public static int partitionArrayWithPivot(double[] array, int firstIndex, int lastIndex) {
 
         // Handle the case where the array has only 1 element
