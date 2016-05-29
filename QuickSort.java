@@ -15,7 +15,7 @@ public class QuickSort implements Sorter {
     @Override
     public void sort(double[] ar) {
 
-        if (!GeneralUtils.doesArrayValid(ar)) {
+        if (!ArraylUtils.doesArrayValid(ar)) {
             throw new RuntimeException("The input array is not valid");
         }
 
@@ -32,7 +32,7 @@ public class QuickSort implements Sorter {
         if ((firstIndex + (MAXIMUM_NUMBER_OF_ELEMENTS_FOR_QUICK_SORT - 1)) <
                 lastIndex) {
 
-            int pivotLocation = GeneralUtils.partitionArrayWithPivot(array, firstIndex, lastIndex);
+            int pivotLocation = ArraylUtils.partitionArrayWithPivot(array, firstIndex, lastIndex);
 
             // Recursively call the algorithm on the two halves of the array
             if (pivotLocation > 0) {

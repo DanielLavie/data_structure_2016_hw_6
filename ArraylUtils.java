@@ -1,4 +1,4 @@
-public class GeneralUtils {
+public class ArraylUtils {
 
     /**
      * Select the first element as a pivot, then partition the array according to this pivot.

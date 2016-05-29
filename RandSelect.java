@@ -16,7 +16,7 @@ public class RandSelect implements Selector {
     @Override
     public double select(double[] ar, int i) {
 
-        if (!GeneralUtils.doesArrayValid(ar)) {
+        if (!ArraylUtils.doesArrayValid(ar)) {
             throw new RuntimeException("The input array is not valid");
         }
 
@@ -47,7 +47,7 @@ public class RandSelect implements Selector {
 
         // Finds a pivot and its relative location to the sub array
         int pivotLocation =
-                GeneralUtils.partitionArrayWithPivot(array, firstIndex, lastIndex);
+                ArraylUtils.partitionArrayWithPivot(array, firstIndex, lastIndex);
         int relativePivotLocation = (pivotLocation - firstIndex) + 1;
 
         if (rank == relativePivotLocation) {

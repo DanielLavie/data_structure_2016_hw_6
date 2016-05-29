@@ -13,7 +13,7 @@ public class MergeSort implements Sorter {
     @Override
     public void sort(double[] ar) {
 
-        if (!GeneralUtils.doesArrayValid(ar)) {
+        if (!ArraylUtils.doesArrayValid(ar)) {
             throw new RuntimeException("The input array is not valid");
         }
 
