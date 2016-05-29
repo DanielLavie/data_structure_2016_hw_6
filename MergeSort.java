@@ -4,10 +4,9 @@
 public class MergeSort implements Sorter {
 
     private double array[];
-    private int arrayLength;
 
     /**
-     * Sort the given array with quick sort algorithm
+     * Sort the given array with merge sort algorithm
      * @param ar    The array to be sorted
      */
     @Override
@@ -19,11 +18,15 @@ public class MergeSort implements Sorter {
 
         // Initiate the members of this class
         this.array = ar;
-        arrayLength = ar.length;
 
-        mergeSort(0, arrayLength - 1);
+        mergeSort(0, array.length - 1);
     }
 
+    /**
+     * Recursive function which implements the merge sort algorithm
+     * @param firstIndex    The first index to be taken in account in the algorithm
+     * @param lastIndex     The last index to be taken in account in the algorithm
+     */
     private void mergeSort(int firstIndex, int lastIndex) {
         if (firstIndex < lastIndex) {
             int middleIndex = (firstIndex + lastIndex) / 2;
@@ -33,6 +36,12 @@ public class MergeSort implements Sorter {
         }
     }
 
+    /**
+     * Merge two halves of the array member
+     * @param firstIndex    The first index in the array
+     * @param middleIndex   The middle index in the array
+     * @param lastIndex     The last index in the array
+     */
     private void merge(int firstIndex, int middleIndex, int lastIndex) {
 
         // Calculate the length of each sub array
