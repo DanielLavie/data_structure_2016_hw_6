@@ -1,5 +1,3 @@
-import org.jcp.xml.dsig.internal.dom.Utils;
-
 import java.util.Arrays;
 
 /**
@@ -8,7 +6,6 @@ import java.util.Arrays;
 public class RandSelect implements Selector {
 
     private double[] array;
-    private int arrayLength;
 
     /**
      * Finds the element whose rank is i in the given array.
@@ -29,12 +26,18 @@ public class RandSelect implements Selector {
 
         // Initiate the members of this class.
         // We use deep copy to avoid messing up the original array
-        arrayLength = ar.length;
-        this.array = Arrays.copyOf(ar, arrayLength);
+        this.array = Arrays.copyOf(ar, ar.length);
 
-        return RandomSelection(0, arrayLength - 1, i);
+        return RandomSelection(0, ar.length - 1, i);
     }
 
+    /**
+     * Recursive function which implements the random selection algorithm
+     * @param firstIndex    The first index in the array to be taken in account
+     * @param lastIndex     The last index in the array to be taken in account
+     * @param rank          The rank to be searched in the given section in the array
+     * @return
+     */
     private double RandomSelection(int firstIndex, int lastIndex, int rank) {
 
         // If we have reached the desired rank, return its value
