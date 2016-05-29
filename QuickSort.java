@@ -1,9 +1,12 @@
+import java.util.Arrays;
+import java.util.Map;
+
 /**
  * This class implement the quick sort algorithm
  */
 public class QuickSort implements Sorter {
 
-    private static final int MAXIMUM_NUMBER_OF_ELEMENTS_FOR_QUICK_SORT = 3;
+    private static final int MINIMUM_NUMBER_OF_ELEMENTS_FOR_QUICK_SORT = 4;
 
     private double array[];
 
@@ -31,17 +34,18 @@ public class QuickSort implements Sorter {
      */
     private void quickSort(int firstIndex, int lastIndex) {
 
-        // Check if we have more than the maximum defined number elements
-        if ((firstIndex + (MAXIMUM_NUMBER_OF_ELEMENTS_FOR_QUICK_SORT - 1)) <
-                lastIndex) {
+        // Check if we have more than the minimum defined number elements
+        int numberOfElementsToSort = (lastIndex - firstIndex) + 1;
+        if (numberOfElementsToSort >= MINIMUM_NUMBER_OF_ELEMENTS_FOR_QUICK_SORT) {
 
-            int pivotLocation = ArraylUtils.partitionArrayWithPivot(array, firstIndex, lastIndex);
+            int pivotLocation =
+                    ArraylUtils.partitionArrayWithPivot(array, firstIndex, lastIndex);
 
             // Recursively call the algorithm on the two halves of the array
-            if (pivotLocation > 0) {
+            if (pivotLocation > 0 && pivotLocation > firstIndex) {
                 quickSort(firstIndex, pivotLocation - 1);
             }
-            if (pivotLocation < array.length - 1) {
+            if (pivotLocation < array.length - 1 && pivotLocation < lastIndex) {
                 quickSort(pivotLocation + 1, lastIndex);
             }
         }
@@ -53,21 +57,25 @@ public class QuickSort implements Sorter {
 
     }
 
-    // TODO: Replace this with the real impl of insertion sort
+    /**
+     * Provide naive sort for quick sort algorithm
+     * In our case, we will insertion sort as the naive sort
+     * @param firstIndex    The first index which will be included in the sort.
+     * @param lastIndex     The last index which will be included in the sort.
+     */
     private void naiveSort(int firstIndex, int lastIndex) {
 
-        for (int i = firstIndex; i <= lastIndex; i++) {
-            double valueToInsert = array[i];
-            int indexToInsert = i;
+        double[] subArrayToNaiveSort =
+                Arrays.copyOfRange(array, firstIndex, lastIndex + 1);
 
-            while(
-                    (indexToInsert > firstIndex) &&
-                            (array[indexToInsert - 1] > valueToInsert)) {
-                array[indexToInsert] = array[indexToInsert - 1];
-                --indexToInsert;
-            }
+        InsertionSort insertionSort = new InsertionSort();
+        insertionSort.sort(subArrayToNaiveSort);
 
-            array[indexToInsert] = valueToInsert;
-        }
+        System.arraycopy(
+                subArrayToNaiveSort,
+                0,
+                array,
+                firstIndex,
+                subArrayToNaiveSort.length);
     }
 }
