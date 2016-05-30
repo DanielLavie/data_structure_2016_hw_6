@@ -1,12 +1,12 @@
 
-public class InsertionSort extends SortingAlgorithm implements Sorter{
+public class InsertionSort implements Sorter{
 
     /**
      * Sorts an array using insertion sort algorithm.
      * @param ar The array to be sorted
      */
     public void sort(double[] ar) {
-        if (!doesArrayValid(ar)) {
+        if (!ArraylUtils.doesArrayValid(ar)) {
             throw new RuntimeException("Given array is not valid");
         }
 
