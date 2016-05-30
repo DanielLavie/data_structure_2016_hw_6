@@ -1,6 +1,3 @@
-import java.util.*;
-import java.text.DecimalFormat;
-
 public class RadixSort implements Sorter{
 
     // Offset from which the numbers after the 0. start.
@@ -31,7 +28,6 @@ public class RadixSort implements Sorter{
         for (int i =0; i < ar.length; i++) {
             ar[i] = Double.valueOf(numAsStrings[i]);
         }
-
     }
 
     /**
